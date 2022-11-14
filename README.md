@@ -1,2 +1,2 @@
 # db3cdc
-live decentralized backup tool for the centralized database
+ decentralized live backup tool for the centralized database
