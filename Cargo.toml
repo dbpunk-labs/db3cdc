@@ -1,0 +1,28 @@
+[package]
+name = "db3cdc"
+version = "0.1.0"
+edition = "2021"
+authors = ["jack wang <jackwang@db3.network>"]
+description = "base module of db3"
+homepage = "https://db3.network"
+repository = "https://github.com/dbpunk-labs/db3cdc"
+keywords = ["database", "web3", "db3"]
+
+[dependencies]
+db3-sdk = { version = "0.1.0",  path = "./thirdparty/db3/src/sdk" }
+db3-proto = { version = "0.1.0",  path = "./thirdparty/db3/src/proto" }
+db3-cmd = { version = "0.1.0",  path = "./thirdparty/db3/src/cmd" }
+db3-crypto = {version="0.1.0", path = "./thirdparty/db3/src/crypto"}
+db3-error = {version="0.1.0", path = "./thirdparty/db3/src/error"}
+mysql_cdc = { version="0.1.6",  path ="./thirdparty/mysql_cdc" }
+tonic = "0.7.2"
+clap = { version = "4.0.20", features = ["derive"] }
+shadow-rs = "0.17.1"
+tokio = { version = "1.17.0", features = ["full"] }
+http = "0.2"
+byteorder = "1.4.3"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+[build-dependencies]
+shadow-rs = "0.17.1"
+
