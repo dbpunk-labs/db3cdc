@@ -1,0 +1,6 @@
+[submodule "thirdparty/db3"]
+	path = thirdparty/db3
+	url = git@github.com:dbpunk-labs/db3.git
+[submodule "thirdparty/mysql_cdc"]
+	path = thirdparty/mysql_cdc
+	url = git@github.com:dbpunk-labs/mysql_cdc.git
