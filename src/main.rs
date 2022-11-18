@@ -30,7 +30,7 @@ use db3cdc::gtid_state::GtidState;
 use http::Uri;
 use mysql_cdc::binlog_client::BinlogClient;
 use mysql_cdc::binlog_options::BinlogOptions;
-use mysql_cdc::constants::{checksum_type::ChecksumType, EVENT_HEADER_SIZE};
+use mysql_cdc::constants::EVENT_HEADER_SIZE;
 use mysql_cdc::events::event_parser::EventParser;
 use mysql_cdc::events::event_type::EventType;
 use mysql_cdc::replica_options::ReplicaOptions;
@@ -97,6 +97,7 @@ async fn recover_gtid(
                 .batch_get(ns.as_bytes(), vec![GTID_KEY.to_vec()], sid)
                 .await
             {
+                store_sdk.close_session(sid).await.unwrap();
                 if let Some(kv_pair) = batch_get_values.values.first() {
                     if let Ok(data) = std::str::from_utf8(kv_pair.value.as_ref()) {
                         info!("find step data {}", data);
