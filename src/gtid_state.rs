@@ -1,5 +1,5 @@
 //
-// lib.rs
+// gtid_state.rs
 // Copyright (C) 2022 db3.network Author imotai <codego.me@gmail.com>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,5 +15,13 @@
 // limitations under the License.
 //
 
-pub mod event_key;
-pub mod gtid_state;
+use mysql_cdc::providers::mariadb::gtid::gtid_list::GtidList;
+use mysql_cdc::providers::mysql::gtid::gtid_set::GtidSet;
+use serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize, Debug)]
+pub enum GtidState {
+    MySQLState(GtidSet),
+    MariaDB(GtidList),
+    Position((String, u32)),
+}
