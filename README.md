@@ -1,8 +1,10 @@
 # DB3 CDC
 
 the first decentralized live backup tool for mysql, why we need db3 cdc
-* No straight way to fully decentralized data architecture. let's approach it step by step. decentralized data backup is a good start.
-* Many web3 companies using mysql as their data backend want to keep transparent with their users by using decentralized data architecture
+* Many web3 developers use mysql to provide good experience to their users and try hard to build a decentralized data architecture to keep transparent with ther users,
+* No straight way to fully decentralized data architecture. let's approach it step by step.
+
+So decentralized data backup is a good start to build a fully decentralized data architecture
 
 `Warning`: Using DB3 and DB3 CDC in production enviroment is not recomended
 
