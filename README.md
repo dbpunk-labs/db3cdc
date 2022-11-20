@@ -11,6 +11,7 @@ So decentralized data backup is a good start to build a fully decentralized data
 # How it works
 
 ![how_it_works](./images/db3_cdc_how_it_works.svg)
+when starting db3cdc for the first time, it will sync data from the begining of mysql binlog and submit mutation which including the binlog events and the progress of synchronization. if you restart db3cdc, it will sync data from the last position that has been submited to db3 
 
 # Getting Started
 
