@@ -14,7 +14,7 @@ So decentralized data backup is a good start to build a fully decentralized data
 
 # Getting Started
 
-1. Download the release of db3 cdc from github according to your operation system, if you want run db3 cdc in linux 
+1. Download the release of db3 cdc from [github](https://github.com/dbpunk-labs/db3cdc/releases/tag/v0.1.0) according to your operation system, if you want run db3 cdc in linux 
 
 ```shell
 wget https://github.com/dbpunk-labs/db3cdc/releases/download/v0.1.0/db3cdc-v0.1.0-linux-x86_64.tar.gz
@@ -64,8 +64,6 @@ restore the key with addr 0x0dce49e41905e6c0c5091adcedee2dee524a3b06
 2022-11-19T02:54:27.108739Z  INFO db3cdc: header timestamp 1668787201, event_type 35, next_event_position 157
 2022-11-19T02:54:27.108790Z  INFO db3cdc: binlog binlog.000004 4
 ```
-
-
 
 
 
