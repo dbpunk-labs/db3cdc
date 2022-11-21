@@ -42,7 +42,7 @@ Options:
  --master-host mysql_host \
  --master-port mysql_port
 ```
-the devnet is unstable, you can change to out [testnet](https://github.com/orgs/dbpunk-labs/discussions/166)
+the devnet is unstable, you can change to our [testnet](https://github.com/orgs/dbpunk-labs/discussions/166)
 
 3. You will see some information
 
