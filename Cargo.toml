@@ -14,7 +14,9 @@ db3-proto = { version = "0.1.0",  path = "./thirdparty/db3/src/proto" }
 db3-cmd = { version = "0.1.0",  path = "./thirdparty/db3/src/cmd" }
 db3-crypto = {version="0.1.0", path = "./thirdparty/db3/src/crypto"}
 db3-error = {version="0.1.0", path = "./thirdparty/db3/src/error"}
+db3-base = {version="0.1.0", path = "./thirdparty/db3/src/base"}
 mysql_cdc = { version="0.1.6",  path ="./thirdparty/mysql_cdc" }
+fastcrypto="0.1.3"
 tonic = "0.7.2"
 clap = { version = "4.0.20", features = ["derive"] }
 shadow-rs = "0.17.1"

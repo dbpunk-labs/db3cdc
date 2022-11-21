@@ -16,17 +16,18 @@
 //
 use shadow_rs::shadow;
 shadow!(build);
+use db3_base::{get_address_from_pk, strings};
 use db3_crypto::signer::Db3Signer;
 use db3_error::{DB3Error, Result};
 use db3_proto::db3_base_proto::{ChainId, ChainRole};
 use db3_proto::db3_mutation_proto::Mutation;
 use db3_proto::db3_mutation_proto::{KvPair, MutationAction};
 use db3_proto::db3_node_proto::storage_node_client::StorageNodeClient;
-
 use db3_sdk::mutation_sdk::MutationSDK;
 use db3_sdk::store_sdk::StoreSDK;
 use db3cdc::event_key;
 use db3cdc::gtid_state::GtidState;
+use fastcrypto::traits::KeyPair;
 use http::Uri;
 use mysql_cdc::binlog_client::BinlogClient;
 use mysql_cdc::binlog_options::BinlogOptions;
@@ -37,7 +38,7 @@ use mysql_cdc::replica_options::ReplicaOptions;
 use mysql_cdc::ssl_mode::SslMode;
 use std::sync::Arc;
 use tonic::transport::{ClientTlsConfig, Endpoint};
-use tracing::{info, warn};
+use tracing::info;
 use tracing_subscriber::filter::LevelFilter;
 const ABOUT: &str = r"
 (  _`\ (  _`\  /'_  )   (  _`\ (  _`\ (  _`\ 
@@ -159,7 +160,11 @@ async fn start_sync(command: Commands) -> Result<()> {
         let gstate = recover_gtid(grpc_client.clone(), my_namespace.as_str()).await;
         let kp = db3_cmd::get_key_pair(true).unwrap();
         let signer = Db3Signer::new(kp);
-        let db3_sdk = MutationSDK::new(grpc_client, signer);
+        let db3_sdk = MutationSDK::new(grpc_client.clone(), signer);
+        let kp = db3_cmd::get_key_pair(false).unwrap();
+        let addr = get_address_from_pk(&kp.public().pubkey);
+        let signer = Db3Signer::new(kp);
+        let store_sdk = StoreSDK::new(grpc_client.clone(), signer);
         let binlog_options = match gstate {
             Ok(Some(GtidState::MySQLState(gtid_set))) => BinlogOptions::from_mysql_gtid(gtid_set),
             Ok(Some(GtidState::MariaDB(gtid_list))) => BinlogOptions::from_mariadb_gtid(gtid_list),
@@ -304,8 +309,18 @@ async fn start_sync(command: Commands) -> Result<()> {
                     };
                     kvs.push(header);
                     if let Ok(r) = db3_sdk.submit_mutation(&mutation).await {
-                        let hash = format!("{:?}", r);
-                        info!("mutation id {}", hash);
+                        info!("mutation id {:?}", r);
+                    }
+                    if let Ok(a) = store_sdk.get_account(&addr).await {
+                        let inner_account = a.clone();
+                        let bills = inner_account.total_bills;
+                        let credits = inner_account.credits;
+                        info!("Your account {:?} status: total bills {}, total storage used {}, total mutation {}, credits {}",
+                              addr,  strings::units_to_readable_num_str(&bills.unwrap()),
+                                      strings::bytes_to_readable_num_str(a.total_storage_in_bytes),
+                                    a.total_mutation_count,
+                                    strings::units_to_readable_num_str(&credits.unwrap())
+                              );
                     }
                 }
             }

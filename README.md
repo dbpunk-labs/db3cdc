@@ -1,10 +1,9 @@
 # DB3 CDC
 
-the first decentralized live backup tool for mysql, why we need db3 cdc
-* Many web3 developers use mysql to provide good experience to their users and try hard to build a decentralized data architecture to keep transparent with ther users,
-* No straight way to fully decentralized data architecture. let's approach it step by step.
-
-So decentralized data backup is a good start to build a fully decentralized data architecture
+The first decentralized live backup tool for mysql which has the following features
+[x] replicate mysql to db3 in realtime
+[x] recover from last synchronization progress which is stored in db3 after restarting db3cdc
+[ ] recover mysql from db3
 
 `Warning`: Using DB3 and DB3 CDC in production enviroment is not recomended
 
@@ -43,28 +42,19 @@ Options:
 ```
 You will see some information
 
-```2022-11-19T02:54:26.886795Z  INFO db3cdc: find step data {"Position":["binlog.000003",2751]}
-WARNING, db3 will generate private key and save it to ~/.db3/key
-restore the key with addr 0x0dce49e41905e6c0c5091adcedee2dee524a3b06
-2022-11-19T02:54:26.887920Z  INFO db3cdc: binlog options BinlogOptions { filename: "binlog.000003", position: 2751, gtid_set: None, gtid_list: None, starting_strategy: FromPosition }
-2022-11-19T02:54:27.107724Z  INFO db3cdc: header timestamp 0, event_type 4, next_event_position 0
-2022-11-19T02:54:27.107882Z  INFO db3cdc: rotate binlog binlog.000003 2751
-2022-11-19T02:54:27.107964Z  INFO db3cdc: header timestamp 1668687954, event_type 15, next_event_position 0
-2022-11-19T02:54:27.108027Z  INFO db3cdc: binlog binlog.000003 2751
-2022-11-19T02:54:27.108108Z  INFO db3cdc: header timestamp 1668735474, event_type 30, next_event_position 2791
-2022-11-19T02:54:27.108158Z  INFO db3cdc: binlog binlog.000003 2751
-2022-11-19T02:54:27.108226Z  INFO db3cdc: header timestamp 1668735474, event_type 16, next_event_position 2822
-2022-11-19T02:54:27.108282Z  INFO db3cdc: binlog binlog.000003 2822
-2022-11-19T02:54:27.108357Z  INFO db3cdc: header timestamp 1668787201, event_type 4, next_event_position 2866
-2022-11-19T02:54:27.108425Z  INFO db3cdc: rotate binlog binlog.000004 4
-2022-11-19T02:54:27.108486Z  INFO db3cdc: header timestamp 0, event_type 4, next_event_position 0
-2022-11-19T02:54:27.108549Z  INFO db3cdc: rotate binlog binlog.000004 4
-2022-11-19T02:54:27.108609Z  INFO db3cdc: header timestamp 1668787201, event_type 15, next_event_position 126
-2022-11-19T02:54:27.108664Z  INFO db3cdc: binlog binlog.000004 4
-2022-11-19T02:54:27.108739Z  INFO db3cdc: header timestamp 1668787201, event_type 35, next_event_position 157
-2022-11-19T02:54:27.108790Z  INFO db3cdc: binlog binlog.000004 4
+```
+2022-11-21T04:47:29.038953Z  INFO db3cdc: no gtid state in db3
+WARNING, db3 will generate private key and save it to /home/jackwang/.db3/user.key
+restore the key with addr 0x97b478ac2bef8762c2ecc08417f35838c4bf73fc
+2022-11-21T04:47:29.040835Z  INFO db3cdc: binlog options BinlogOptions { filename: "", position: 4, gtid_set: None, gtid_list: None, starting_strategy: FromStart }
+2022-11-21T04:47:29.349037Z  INFO db3cdc: mutation id "tWYRruF8dSwvOySMypYCD0pJTVZgquKZu116UddTAps="
+2022-11-21T04:47:29.429778Z  INFO db3cdc: Your account 0x97b478ac2bef8762c2ecc08417f35838c4bf73fc status: total bills 0.000000 db3, total storage used 0.00 , total mutation 0, credits 10 db3
 ```
 
+these information includes
+* your key path
+* last synchronization progress
+* your account bills status and credit
 
 
 
