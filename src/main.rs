@@ -43,9 +43,11 @@ use tracing_subscriber::filter::LevelFilter;
 const ABOUT: &str = r"
 (  _`\ (  _`\  /'_  )   (  _`\ (  _`\ (  _`\ 
 | | ) || (_) )(_)_) |   | ( (_)| | ) || ( (_)
-| | | )|  _ <' _(_ <    | |  _ | | | )| |  _ 
+| | | )|  _ <' _(_ <    | |  _ | | | )| |  _
 | |_) || (_) )( )_) |   | (_( )| |_) || (_( )
 (____/'(____/'`\____)   (____/'(____/'(____/'
+any issues are welcome
+https://github.com/dbpunk-labs/db3cdc/issues
 ";
 use clap::{Parser, Subcommand};
 const GTID_KEY: [u8; 1] = [0];
