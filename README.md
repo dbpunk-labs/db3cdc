@@ -11,9 +11,11 @@ The first decentralized live backup tool for mysql which has the following featu
 
 ![how_it_works](./images/db3_cdc_how_it_works.svg)
 
+when starting db3cdc for the first time, it will sync data from the begining of mysql binlog and submit mutation including the binlog events and the progress of synchronization. if you restart db3cdc, it will sync data from the last position that has been submited to db3 
+
 # Getting Started
 
-1. Download the release of db3 cdc from github according to your operation system, if you want run db3 cdc in linux 
+1. Download the release of db3 cdc from [github](https://github.com/dbpunk-labs/db3cdc/releases/tag/v0.1.0) according to your operation system, if you want run db3 cdc in linux 
 
 ```shell
 wget https://github.com/dbpunk-labs/db3cdc/releases/download/v0.1.0/db3cdc-v0.1.0-linux-x86_64.tar.gz
@@ -40,7 +42,8 @@ Options:
  --master-port mysql_port
 
 ```
-You will see some information
+
+3. You will see some information
 
 ```
 2022-11-21T04:47:29.038953Z  INFO db3cdc: no gtid state in db3
@@ -55,10 +58,6 @@ these information includes
 * your key path
 * last synchronization progress
 * your account bills status and credit
-
-
-
-
 
 
 
