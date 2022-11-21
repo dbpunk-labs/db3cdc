@@ -33,7 +33,7 @@ Commands:
 Options:
   -h, --help  Print help information
 ```
-2. use db3cdc to replicat mysql to db3
+2. use db3cdc to replicate mysql to db3
 
 ```
 ./bin/db3cdc sync --db3-node-grpc-url https://grpc.devnet.db3.network\
