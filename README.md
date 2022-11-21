@@ -19,7 +19,7 @@ when starting db3cdc for the first time, it will sync data from the begining of 
 1. Download the release of db3 cdc from [github](https://github.com/dbpunk-labs/db3cdc/releases/tag/v0.2.0) according to your operation system, if you want run db3 cdc in linux 
 
 ```shell
-wget https://github.com/dbpunk-labs/db3cdc/releases/download/v0.1.0/db3cdc-v0.2.0-linux-x86_64.tar.gz
+wget https://github.com/dbpunk-labs/db3cdc/releases/download/v0.2.0/db3cdc-v0.2.0-linux-x86_64.tar.gz
 tar -zxf db3cdc-v0.2.0-linux-x86_64.tar.gz
 cd ./db3cdc-v0.2.0-linux-x86_64/
 ./bin/db3cdc --help
