@@ -42,7 +42,7 @@ Options:
  --master-host mysql_host \
  --master-port mysql_port
 ```
-the devnet is unstable, you can change the grpc url to our testnet
+the devnet is unstable, you can change the grpc url to the following nodes in our testnet
 * ap-southeast node, grpc http://18.142.114.145:26659
 * ap-east node, grpc http://18.162.230.6:26659 
 * us-east node, grpc http://18.117.125.43:26659
