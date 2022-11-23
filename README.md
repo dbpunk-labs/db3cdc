@@ -1,6 +1,6 @@
 # DB3 CDC
 
-The first decentralized live backup tool for mysql which has the following features
+The first data backup protocol based on db3 for mysql which has the following features
 
 * [x] replicate mysql to db3 in realtime
 * [x] recover from last synchronization progress which is stored in db3 after restarting db3cdc
